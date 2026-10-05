@@ -1,0 +1,71 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f5f7fb;color:#0A1931;overflow-x:hidden;}
+nav{background:#0A1931;color:white;display:flex;justify-content:space-between;padding:15px 5%;align-items:center;position:sticky;top:0;z-index:1000;}
+.logo{color:#FFD700;letter-spacing:2px;font-weight:800;}
+nav ul{display:flex;list-style:none;gap:20px;}
+nav a{color:white;text-decoration:none;font-weight:500;}
+nav a:hover{color:#FFD700;}
+.hero{position:relative;height:90vh;background:#0A1931;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.slider{position:absolute;top:0;left:0;width:100%;height:100%;}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;transition:opacity 1.2s ease;}
+.slide.active{opacity:0.55;}
+.hero-text{position:relative;z-index:2;color:white;padding:0 20px;}
+.hero-text h1{font-size:clamp(2rem,6vw,3.5rem);}
+.hero-text span{color:#FFD700;}
+.hero-text p{margin-top:10px;font-size:1.1rem;opacity:0.9;}
+.btn{display:inline-block;margin-top:20px;background:#FFD700;color:#0A1931;padding:14px 30px;border-radius:30px;text-decoration:none;font-weight:bold;letter-spacing:1px;}
+.btn:hover{background:white;transform:scale(1.05);transition:0.3s;}
+section{padding:60px 5%;}
+section h2{color:#0A1931;border-left:5px solid #FFD700;padding-left:15px;margin-bottom:20px;}
+.project-card{background:white;padding:25px;border-radius:15px;max-width:600px;box-shadow:0 10px 30px rgba(10,25,49,0.1);border-bottom:4px solid #FFD700;}
+#contact{background:#0A1931;color:white;}
+#contact h2{color:#FFD700;border-left-color:white;}
+@media(max-width:768px){nav{padding:15px 20px;}nav ul{gap:12px;font-size:0.9rem;}.hero{height:75vh;}section{padding:40px 20px;}}
+footer{
+  background:#191970;
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+  margin-top:50px;
+}
+footer h3{
+  color:#FFD700;
+  margin:0;
+  font-size:24px;
+}
+footer p{
+  margin:10px 0;
+  opacity:0.9;
+}
+.footer-links a{
+  color:#FFD700;
+  text-decoration:none;
+  margin:0 5px;
+  font-weight:bold;
+}
+.footer-links a:hover{
+  text-decoration:underline;
+}
+.copy{
+  font-size:13px;
+  opacity:0.6;
+  margin-top:15px;
+}
+#contact {
+  background: #0A1931 !important;
+  color: white !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 50px;
+}
+#contact p, #contact h2 {
+  color: white !important;
+}
+#contact h2 {
+  color: #FFC300 !important;
+}
+
+footer {
+  background: #0A1931 !important;
+  margin-top: 0 !important;
+  padding-top: 20px !important;
+}
