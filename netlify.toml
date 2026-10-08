@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 [build]
-=======
-[build]
->>>>>>> 9832c8a5484e91cf0347c50cefe56abf013bb33d
   functions = "netlify/functions"
