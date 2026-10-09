@@ -163,9 +163,10 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- ===== NEXUS AI CHAT BUBBLE ===== -->
-<button id="nexus-toggle" class="nexus-toggle">
-  💬
+   <!-- ===== NEXUS AI CHAT BUBBLE ===== -->
+<button id="nexus-toggle" class="nexus-toggle" aria-label="Open Nexus AI">
+  <span class="nexus-pulse"></span>
+  <span class="nexus-icon">💬</span>
 </button>
 
 <div id="nexus-window" class="nexus-window">
@@ -174,10 +175,10 @@
       <div class="nexus-avatar">N</div>
       <div>
         <h3>Nexus AI</h3>
-        <span>Online</span>
+        <span><span class="nexus-dot"></span>Online</span>
       </div>
     </div>
-    <button id="nexus-close" class="nexus-close">×</button>
+    <button id="nexus-close" class="nexus-close" aria-label="Close chat">✕</button>
   </div>
   <div id="nexus-messages" class="nexus-messages">
     <div class="nexus-message nexus-bot">
@@ -186,7 +187,7 @@
   </div>
   <div class="nexus-input-area">
     <input type="text" id="nexus-input" placeholder="Type your message..." autocomplete="off">
-    <button id="nexus-send" class="nexus-send">➤</button>
+    <button id="nexus-send" class="nexus-send" aria-label="Send message">➤</button>
   </div>
 </div>
 </body>
