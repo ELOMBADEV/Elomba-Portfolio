@@ -7,7 +7,9 @@ if (slides.length > 0) {
     slides[current].classList.remove("active");
     current = (current + 1) % slides.length;
     slides[current].classList.add("active");
-}, 3500);
+  }, 3500);
+}
+
 // ===== NEXUS AI CHAT BUBBLE =====
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.getElementById('nexus-toggle');
@@ -46,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     messages.scrollTop = messages.scrollHeight;
 
     try {
-      // NOTE: This will be updated when we set up the Cloudflare function
       const response = await fetch('/.netlify/functions/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
