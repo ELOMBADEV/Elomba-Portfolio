@@ -19,7 +19,7 @@ export async function onRequestPost(context) {
     });
   } catch (error) {
     console.log('AI Error:', error.message);
-    return new Response(JSON.stringify({ reply: FRIENDLY_ERROR }), {
+    return new Response(JSON.stringify({ reply: "DEBUG: " + error.message }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
