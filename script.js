@@ -24,6 +24,26 @@ document.addEventListener('DOMContentLoaded', function () {
     close.addEventListener('click', () => win.classList.remove('open'));
     send.addEventListener('click', sendMessage);
     input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+    // Welcome bubble logic
+    const welcome = document.getElementById('nexus-welcome');
+    const welcomeClose = document.getElementById('nexus-welcome-close');
+
+    if (welcome && !localStorage.getItem('nexus_welcome_seen')) {
+      setTimeout(() => welcome.classList.add('show'), 3000);
+    }
+
+    if (welcomeClose) {
+      welcomeClose.addEventListener('click', () => {
+        welcome.classList.remove('show');
+        localStorage.setItem('nexus_welcome_seen', 'true');
+      });
+    }
+
+    toggle.addEventListener('click', () => {
+      welcome.classList.remove('show');
+      localStorage.setItem('nexus_welcome_seen', 'true');
+    });
   }
 
   function addMessage(text, sender) {

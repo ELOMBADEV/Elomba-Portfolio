@@ -170,3 +170,43 @@ footer p{margin:10px 0;opacity:0.9;}
 @media (max-width: 480px) {
   .nexus-window { width: calc(100vw - 32px); height: 70vh; right: 16px; bottom: 90px; }
 }
+/* ===== NEXUS AI WELCOME BUBBLE ===== */
+.nexus-welcome {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  background: #0A1128;
+  border: 1px solid #FFC300;
+  border-radius: 12px;
+  padding: 12px 16px;
+  max-width: 240px;
+  box-shadow: 0 4px 20px rgba(255, 195, 0, 0.3);
+  z-index: 9997;
+  display: none;
+  animation: nexusWelcomeIn 0.4s ease;
+}
+.nexus-welcome.show { display: flex; align-items: center; gap: 8px; }
+.nexus-welcome-text {
+  color: #FFFFFF;
+  font-size: 13px;
+  line-height: 1.4;
+  font-family: Arial, sans-serif;
+}
+.nexus-welcome-close {
+  background: none;
+  border: none;
+  color: #FFC300;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0;
+  line-height: 1;
+  opacity: 0.7;
+}
+.nexus-welcome-close:hover { opacity: 1; }
+@keyframes nexusWelcomeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 480px) {
+  .nexus-welcome { right: 16px; bottom: 90px; max-width: 200px; }
+}
