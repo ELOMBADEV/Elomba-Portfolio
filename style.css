@@ -22,11 +22,16 @@ footer p{margin:10px 0;opacity:0.9;}
 .hero {
   position: relative;
   min-height: 95vh;
-  background: #0A1128;
+  background-color: #0A1128;
+  /* This adds the tech circuit pattern in the background */
+  background-image: 
+    linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFC300' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   display: flex;
   align-items: center;
   padding: 120px 5% 60px;
   overflow: hidden;
+  font-family: 'Outfit', sans-serif; /* NEW FONT */
 }
 
 .hero-glow {
@@ -35,7 +40,7 @@ footer p{margin:10px 0;opacity:0.9;}
   right: 0;
   width: 50%;
   height: 100%;
-  background: radial-gradient(circle at 70% 50%, rgba(255, 195, 0, 0.15) 0%, transparent 60%);
+  background: radial-gradient(circle at 70% 50%, rgba(255, 195, 0, 0.2) 0%, transparent 60%);
   z-index: 1;
   pointer-events: none;
 }
@@ -64,21 +69,22 @@ footer p{margin:10px 0;opacity:0.9;}
 
 .hero-text h1 {
   color: #FFFFFF;
-  font-size: 4rem;
-  line-height: 1.1;
+  font-size: 4.5rem;
+  line-height: 1.05;
   margin-bottom: 20px;
-  font-weight: 800;
+  font-weight: 800; /* Extra bold for impact */
   letter-spacing: -1px;
 }
 
 .hero-text h1 span { color: #FFC300; }
 
 .hero-desc {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #B0C4DE;
   max-width: 550px;
   margin-bottom: 40px;
   line-height: 1.6;
+  font-weight: 300;
 }
 
 .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
@@ -89,8 +95,8 @@ footer p{margin:10px 0;opacity:0.9;}
   padding: 16px 32px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 1.1rem;
   transition: transform 0.3s;
   box-shadow: 0 4px 15px rgba(255, 195, 0, 0.3);
 }
@@ -103,8 +109,8 @@ footer p{margin:10px 0;opacity:0.9;}
   padding: 14px 32px;
   border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 1.1rem;
   transition: all 0.3s;
 }
 .btn-outline:hover { background: #FFC300; color: #0A1128; }
@@ -121,7 +127,7 @@ footer p{margin:10px 0;opacity:0.9;}
   height: auto;
   max-height: 75vh;
   object-fit: contain;
-  filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.4)); 
+  filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.5)); 
 }
 
 /* ===== MOBILE FIXES ===== */
@@ -131,16 +137,14 @@ footer p{margin:10px 0;opacity:0.9;}
   .hero-text { text-align: center; }
   .hero-desc { margin: 0 auto 30px auto; }
   .hero-buttons { justify-content: center; }
-  .hero-text h1 { font-size: 2.8rem; }
+  .hero-text h1 { font-size: 3rem; }
   .hero-image img { max-height: 40vh; }
 }
 
 @media (max-width: 480px) {
-  nav ul { gap: 10px; font-size: 0.85rem; }
   .hero-text h1 { font-size: 2.2rem; }
   .hero-desc { font-size: 1rem; }
   .btn-gold, .btn-outline { width: 100%; text-align: center; }
-  section { padding: 40px 16px; }
 }
 
 /* ===== NEXUS AI CHAT BUBBLE ===== */
