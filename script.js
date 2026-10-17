@@ -1,16 +1,3 @@
-// ===== HERO SLIDER =====
-let slides = document.querySelectorAll(".slide");
-let current = 0;
-
-if (slides.length > 0) {
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }, 3500);
-}
-
-// ===== NEXUS AI CHAT BUBBLE =====
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.getElementById('nexus-toggle');
   const win = document.getElementById('nexus-window');
@@ -82,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // ===== NATIVE COMMENT SECTION =====
+  // ===== REVIEW SECTION =====
   const nameInput = document.getElementById('comment-name');
   const textInput = document.getElementById('comment-text');
   const submitBtn = document.getElementById('comment-submit');
