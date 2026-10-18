@@ -113,18 +113,6 @@ footer p{margin:10px 0;opacity:0.9;}
   align-items: flex-end;
 }
 
-/* THIS IS THE FIX FOR THE PHOTO */
-.hero-photo {
-  max-width: 100%;
-  height: auto;
-  max-height: 65vh; /* Smaller photo */
-  object-fit: contain;
-  /* A much softer, more realistic shadow */
-  filter: drop-shadow(-10px 10px 20px rgba(0,0,0,0.5)); 
-  /* Optional: Adds a subtle gold rim light to the left side of your body */
-  border-left: 2px solid rgba(255, 195, 0, 0.3); 
-}
-
 /* ===== MOBILE FIXES ===== */
 @media (max-width: 900px) {
   .hero { padding-top: 120px; min-height: 100vh; }
@@ -198,4 +186,113 @@ footer p{margin:10px 0;opacity:0.9;}
 @media (max-width: 480px) {
   .nexus-window { width: calc(100vw - 32px); height: 70vh; right: 16px; bottom: 90px; }
   .nexus-welcome { right: 16px; bottom: 90px; max-width: 200px; }
+}
+/* ===== FINAL PROFESSIONAL HERO ===== */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  background-color: #0A1128;
+  background-image: 
+    linear-gradient(rgba(10, 17, 40, 0.95), rgba(10, 17, 40, 0.95)),
+    linear-gradient(to right, rgba(255, 195, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 195, 0, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  display: flex;
+  align-items: center;
+  padding: 120px 5% 60px;
+  overflow: hidden;
+  font-family: 'Outfit', sans-serif;
+}
+
+.hero-glow {
+  position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+  background: radial-gradient(circle at 70% 50%, rgba(255, 195, 0, 0.15) 0%, transparent 60%);
+  z-index: 1; pointer-events: none;
+}
+
+.hero-content {
+  position: relative; display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto; width: 100%; gap: 50px; z-index: 2;
+}
+
+.hero-text { flex: 1.2; text-align: left; }
+.hero-greeting { color: #FFC300; font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+.hero-text h1 { color: #FFFFFF; font-size: 3.8rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; letter-spacing: -1px; }
+.hero-text h1 span { color: #FFC300; }
+.hero-desc { font-size: 1.15rem; color: #A0B0C0; max-width: 500px; margin-bottom: 40px; line-height: 1.6; }
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+
+.btn-gold { background: #FFC300; color: #0A1128; padding: 16px 32px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+.btn-gold:hover { background: #FFD700; transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #FFFFFF; border: 2px solid #FFFFFF; padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+.btn-outline:hover { background: #FFFFFF; color: #0A1128; }
+
+/* ===== THE CIRCLE FRAME ===== */
+.hero-image { flex: 0.8; display: flex; justify-content: center; align-items: center; }
+.circle-frame {
+  width: 380px; height: 380px; border-radius: 50%; border: 4px solid #FFD700;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.3); overflow: hidden; background-color: #1B2A4E;
+  animation: floatImage 6s ease-in-out infinite;
+}
+.circle-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 900px) {
+  .hero { padding-top: 120px; min-height: 100vh; }
+  .hero-content { flex-direction: column-reverse; text-align: center; gap: 30px; }
+  .hero-text { text-align: center; }
+  .hero-desc { margin: 0 auto 30px auto; }
+  .hero-buttons { justify-content: center; }
+  .hero-text h1 { font-size: 2.8rem; }
+  .circle-frame { width: 280px; height: 280px; }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-desc { font-size: 1rem; }
+  .btn-gold, .btn-outline { width: 100%; text-align: center; }
+}
+/* ===== THE CIRCULAR FRAME ===== */
+.hero-image {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-frame {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 4px solid #FFD700;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+  overflow: hidden;
+  background-color: #1B2A4E;
+  animation: floatImage 6s ease-in-out infinite;
+}
+
+.circle-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (max-width: 900px) {
+  .circle-frame {
+    width: 280px;
+    height: 280px;
+  }
 }
