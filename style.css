@@ -116,3 +116,40 @@ section h2{color:#0A1931;border-left:5px solid #FFD700;padding-left:15px;margin-
   .nexus-window { width: calc(100vw - 32px); height: 70vh; right: 16px; bottom: 90px; }
   .nexus-welcome { right: 16px; bottom: 90px; max-width: 200px; }
 }
+/* ===== DYNAMIC REVIEW CARDS (The fix) ===== */
+.review-card {
+  background: #1B2A4E;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-left: 4px solid #FFC300;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.review-card .review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.review-card .review-name {
+  color: #FFC300 !important; /* Gold name */
+  font-weight: bold;
+  font-size: 16px;
+}
+.review-card .review-stars {
+  color: #FFD700 !important;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.review-card .review-text {
+  color: #E0E0E0 !important; /* Light grey text */
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+.review-card .review-date {
+  color: #888 !important;
+  font-size: 12px;
+}
