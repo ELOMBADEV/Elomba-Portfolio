@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  // ===== NEXUS AI CHAT BUBBLE =====
   const toggle = document.getElementById('nexus-toggle');
   const win = document.getElementById('nexus-window');
   const close = document.getElementById('nexus-close');
@@ -74,6 +75,30 @@ document.addEventListener('DOMContentLoaded', function () {
   const textInput = document.getElementById('comment-text');
   const submitBtn = document.getElementById('comment-submit');
   const commentList = document.getElementById('comment-list');
+  const stars = document.querySelectorAll('.star');
+  let selectedRating = 0;
+
+  // Star rating interaction
+  if (stars.length > 0) {
+    stars.forEach(star => {
+      star.addEventListener('mouseover', () => {
+        const value = parseInt(star.dataset.value);
+        stars.forEach(s => {
+          s.classList.toggle('hover', parseInt(s.dataset.value) <= value);
+        });
+      });
+      star.addEventListener('mouseout', () => {
+        stars.forEach(s => s.classList.remove('hover'));
+      });
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.value);
+        stars.forEach(s => {
+          s.classList.toggle('active', parseInt(s.dataset.value) <= selectedRating);
+          s.textContent = parseInt(s.dataset.value) <= selectedRating ? '★' : '☆';
+        });
+      });
+    });
+  }
 
   if (submitBtn) {
     let comments = JSON.parse(localStorage.getItem('elomba_comments') || '[]');
@@ -82,24 +107,42 @@ document.addEventListener('DOMContentLoaded', function () {
     submitBtn.addEventListener('click', function () {
       const name = nameInput.value.trim();
       const text = textInput.value.trim();
-      if (!name || !text) { alert('Please fill in both fields.'); return; }
-      comments.push({ name, text, date: new Date().toLocaleDateString() });
+      if (!name || !text || selectedRating === 0) {
+        alert('Please fill in your name, review, and select a star rating.');
+        return;
+      }
+      comments.push({
+        name: name,
+        text: text,
+        rating: selectedRating,
+        date: new Date().toLocaleDateString()
+      });
       localStorage.setItem('elomba_comments', JSON.stringify(comments));
+
       nameInput.value = '';
       textInput.value = '';
+      selectedRating = 0;
+      stars.forEach(s => { s.classList.remove('active'); s.textContent = '☆'; });
       renderComments();
     });
 
     function renderComments() {
       commentList.innerHTML = '';
       if (comments.length === 0) {
-        commentList.innerHTML = '<p style="color:#888; text-align:center;">No reviews yet. Be the first!</p>';
-        return;
+        return; 
       }
       comments.slice().reverse().forEach(c => {
         const div = document.createElement('div');
-        div.style.cssText = 'background:#0A1931; padding:15px 20px; border-radius:10px; margin-bottom:10px; border-left:4px solid #FFC300;';
-        div.innerHTML = `<strong style="color:#FFC300; display:block; margin-bottom:5px;">${c.name}</strong><p style="color:#E0E0E0; margin:0; font-size:14px;">${c.text}</p><small style="color:#888; font-size:12px;">${c.date}</small>`;
+        div.className = 'review-card';
+        const starStr = '★'.repeat(c.rating || 5) + '☆'.repeat(5 - (c.rating || 5));
+        div.innerHTML = `
+          <div class="review-header">
+            <span class="review-name">${c.name}</span>
+            <span class="review-stars">${starStr}</span>
+          </div>
+          <p class="review-text">${c.text}</p>
+          <span class="review-date">${c.date}</span>
+        `;
         commentList.appendChild(div);
       });
     }
