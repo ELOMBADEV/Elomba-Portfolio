@@ -6,17 +6,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const input = document.getElementById('nexus-input');
   const send = document.getElementById('nexus-send');
   const messages = document.getElementById('nexus-messages');
+  const welcome = document.getElementById('nexus-welcome');
+  const welcomeClose = document.getElementById('nexus-welcome-close');
 
   if (toggle && win) {
-    toggle.addEventListener('click', () => win.classList.toggle('open'));
+    // Toggle open/close
+    toggle.addEventListener('click', () => {
+      win.classList.toggle('open');
+      if(welcome) welcome.classList.remove('show');
+    });
+    
     close.addEventListener('click', () => win.classList.remove('open'));
     send.addEventListener('click', sendMessage);
     input.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
 
     // Welcome bubble logic
-    const welcome = document.getElementById('nexus-welcome');
-    const welcomeClose = document.getElementById('nexus-welcome-close');
-
     if (welcome && !localStorage.getItem('nexus_welcome_seen')) {
       setTimeout(() => welcome.classList.add('show'), 3000);
     }
@@ -27,11 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('nexus_welcome_seen', 'true');
       });
     }
-
-    toggle.addEventListener('click', () => {
-      welcome.classList.remove('show');
-      localStorage.setItem('nexus_welcome_seen', 'true');
-    });
   }
 
   function addMessage(text, sender) {
@@ -78,18 +77,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const stars = document.querySelectorAll('.star');
   let selectedRating = 0;
 
-  // Star rating interaction
   if (stars.length > 0) {
     stars.forEach(star => {
       star.addEventListener('mouseover', () => {
         const value = parseInt(star.dataset.value);
-        stars.forEach(s => {
-          s.classList.toggle('hover', parseInt(s.dataset.value) <= value);
-        });
+        stars.forEach(s => s.classList.toggle('hover', parseInt(s.dataset.value) <= value));
       });
-      star.addEventListener('mouseout', () => {
-        stars.forEach(s => s.classList.remove('hover'));
-      });
+      star.addEventListener('mouseout', () => stars.forEach(s => s.classList.remove('hover')));
       star.addEventListener('click', () => {
         selectedRating = parseInt(star.dataset.value);
         stars.forEach(s => {
@@ -111,14 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('Please fill in your name, review, and select a star rating.');
         return;
       }
-      comments.push({
-        name: name,
-        text: text,
-        rating: selectedRating,
-        date: new Date().toLocaleDateString()
-      });
+      comments.push({ name: name, text: text, rating: selectedRating, date: new Date().toLocaleDateString() });
       localStorage.setItem('elomba_comments', JSON.stringify(comments));
-
       nameInput.value = '';
       textInput.value = '';
       selectedRating = 0;
@@ -128,9 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderComments() {
       commentList.innerHTML = '';
-      if (comments.length === 0) {
-        return; 
-      }
+      if (comments.length === 0) return;
       comments.slice().reverse().forEach(c => {
         const div = document.createElement('div');
         div.className = 'review-card';
