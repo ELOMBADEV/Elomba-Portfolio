@@ -33,10 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function addMessage(text, sender) {
+   function addMessage(text, sender) {
     const msg = document.createElement('div');
     msg.className = 'nexus-message ' + (sender === 'user' ? 'nexus-user' : 'nexus-bot');
-    msg.textContent = text;
+    // This converts raw links into clickable tags
+    const urlRegex = /(https?:\/\/[^\s]+|mailto:[^\s]+)/g;
+    msg.innerHTML = text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" style="color: #FFC300; text-decoration: underline;">${url}</a>`);
     messages.appendChild(msg);
     messages.scrollTop = messages.scrollHeight;
   }
