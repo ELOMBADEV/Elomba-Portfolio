@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const thinking = document.createElement('div');
     thinking.className = 'nexus-message nexus-bot';
-    thinking.textContent = 'Typing...';
+    thinking.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>'
     thinking.id = 'nexus-thinking';
     messages.appendChild(thinking);
     messages.scrollTop = messages.scrollHeight;
